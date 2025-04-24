@@ -21,21 +21,27 @@ export default function UrlForm() {
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
+		<div className="url-form-container">
+			<form onSubmit={handleSubmit} className="url-form">
 				<input
 					type="url"
+					id="originalUrl"
+					name="originalUrl"
 					value={url}
 					onChange={(e) => setUrl(e.target.value)}
 					placeholder="Pega tu URL larga"
 					required
+					title="Introduce una URL válida"
 				/>
 				<button type="submit">Acortar</button>
 			</form>
 			{shortUrl && (
-				<div>
-					<p>
-						URL corta: <a href={shortUrl}>{shortUrl}</a>
+				<div className="result-container">
+					<p className="result-title">URL corta</p>
+					<p className="result-url">
+						<a href={shortUrl} target="_blank" rel="noreferrer">
+							{shortUrl}
+						</a>
 					</p>
 				</div>
 			)}

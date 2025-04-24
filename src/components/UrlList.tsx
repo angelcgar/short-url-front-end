@@ -15,25 +15,34 @@ export default function UrlList() {
 	useEffect(() => {
 		const fetchUrls = async () => {
 			const response = await axios.get('http://localhost:3000/api/short');
+			console.log(response.data, 'urls');
 			setUrls(response.data);
 		};
 		fetchUrls();
 	}, []);
 
 	return (
-		<ul>
+		<ul className="url-grid">
 			{urls.map((url) => (
-				<li key={url.short_code}>
-					<a
-						href={`http://localhost:3000/api/short/${url.short_code}`}
-						target="_blank"
-						rel="noreferrer"
-					>
-						http://localhost:3000/api/short/{url.short_code}
-					</a>{' '}
-					→ {url.original_url}
+				<li key={url.short_code} className="url-card">
+					<div className="url-pair">
+						<a
+							href={`http://localhost:3000/api/short/${url.short_code}`}
+							target="_blank"
+							rel="noreferrer"
+							className="short-url"
+						>
+							http://localhost:3000/api/short/{url.short_code}
+						</a>
+						<span className="original-url"> → {url.original_url}</span>
+					</div>
+					<div className="meta-info">
+						<p>{url.created_at}</p>
+						<p>{url.visit_count} visitas</p>
+					</div>
 				</li>
 			))}
+			<div className="copied-message">¡Copiado!</div>
 		</ul>
 	);
 }
