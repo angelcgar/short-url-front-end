@@ -22,12 +22,18 @@ export default function UrlList() {
 
 	return (
 		<ul>
-			{/* {urls.map((url) => (
-				<li key={url.shortCode}>
-					<a href={`http://localhost:3000/${url.shortCode}`}>{url.shortCode}</a>{" "}
-					→ {url.originalUrl}
+			{urls.map((url) => (
+				<li key={url.short_code}>
+					<a
+						href={`http://localhost:3000/api/short/${url.short_code}`}
+						target="_blank"
+						rel="noreferrer"
+					>
+						http://localhost:3000/api/short/{url.short_code}
+					</a>{' '}
+					→ {url.original_url}
 				</li>
-			))} */}
+			))}
 		</ul>
 	);
 }
