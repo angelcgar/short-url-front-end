@@ -1,8 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+interface ShortUrl {
+	id: number;
+	original_url: string;
+	short_code: string;
+	created_at: string;
+	visit_count: number;
+}
+
 export default function UrlList() {
-	const [urls, setUrls] = useState([]);
+	const [urls, setUrls] = useState<ShortUrl[]>([]);
 
 	useEffect(() => {
 		const fetchUrls = async () => {
