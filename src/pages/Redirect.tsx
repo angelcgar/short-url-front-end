@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Redirect() {
 	const { shortCode } = useParams();
@@ -15,7 +15,7 @@ export default function Redirect() {
 				);
 				window.location.href = response.data.originalUrl;
 			} catch {
-				navigate("/"); // Redirige a Home si no existe
+				navigate('/'); // Redirige a Home si no existe
 			}
 		};
 		fetchOriginalUrl();

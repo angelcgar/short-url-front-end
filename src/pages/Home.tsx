@@ -1,5 +1,5 @@
-import UrlForm from "../components/UrlForm";
-import UrlList from "../components/UrlList";
+import UrlForm from '../components/UrlForm';
+import UrlList from '../components/UrlList';
 
 export default function Home() {
 	return (

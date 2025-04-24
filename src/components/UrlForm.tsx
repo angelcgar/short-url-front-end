@@ -1,14 +1,14 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function UrlForm() {
-	const [url, setUrl] = useState("");
-	const [shortUrl, setShortUrl] = useState("");
+	const [url, setUrl] = useState('');
+	const [shortUrl, setShortUrl] = useState('');
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		try {
-			const response = await axios.post("http://localhost:3000/api/short", {
+			const response = await axios.post('http://localhost:3000/api/short', {
 				original_url: url,
 			});
 			console.log(response.data);
@@ -16,7 +16,7 @@ export default function UrlForm() {
 				`http://localhost:3000/api/short/${response.data.short_code}`,
 			);
 		} catch (error) {
-			console.error("Error acortando URL:", error);
+			console.error('Error acortando URL:', error);
 		}
 	};
 

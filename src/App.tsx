@@ -1,6 +1,6 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Redirect from "./pages/Redirect";
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Redirect from './pages/Redirect';
 
 function App() {
 	return (
