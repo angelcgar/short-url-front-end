@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import { BACKEND_URL } from '../const';
+
 export default function Redirect() {
 	const { shortCode } = useParams();
 	const navigate = useNavigate();
@@ -10,9 +12,7 @@ export default function Redirect() {
 	useEffect(() => {
 		const fetchOriginalUrl = async () => {
 			try {
-				const response = await axios.get(
-					`http://localhost:3000/api/${shortCode}`,
-				);
+				const response = await axios.get(`${BACKEND_URL}/api/${shortCode}`);
 				window.location.href = response.data.originalUrl;
 			} catch {
 				navigate('/'); // Redirige a Home si no existe

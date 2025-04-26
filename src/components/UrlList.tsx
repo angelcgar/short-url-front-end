@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
+
 import axios from 'axios';
+
+import { BACKEND_URL } from '../const';
 
 interface ShortUrl {
 	id: number;
@@ -14,7 +17,7 @@ export default function UrlList() {
 
 	useEffect(() => {
 		const fetchUrls = async () => {
-			const response = await axios.get('http://localhost:3000/api/short');
+			const response = await axios.get(`${BACKEND_URL}/api/short`);
 			console.log(response.data, 'urls');
 			setUrls(response.data);
 		};
@@ -27,12 +30,12 @@ export default function UrlList() {
 				<li key={url.short_code} className="url-card">
 					<div className="url-pair">
 						<a
-							href={`http://localhost:3000/api/short/${url.short_code}`}
+							href={`${BACKEND_URL}/api/short/${url.short_code}`}
 							target="_blank"
 							rel="noreferrer"
 							className="short-url"
 						>
-							http://localhost:3000/api/short/{url.short_code}
+							{`${BACKEND_URL}/api/short/${url.short_code}`}
 						</a>
 						<span className="original-url"> → {url.original_url}</span>
 					</div>

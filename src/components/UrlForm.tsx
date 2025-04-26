@@ -1,5 +1,8 @@
 import { useState } from 'react';
+
 import axios from 'axios';
+
+import { BACKEND_URL } from '../const';
 
 export default function UrlForm() {
 	const [url, setUrl] = useState('');
@@ -8,13 +11,11 @@ export default function UrlForm() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		try {
-			const response = await axios.post('http://localhost:3000/api/short', {
+			const response = await axios.post(`${BACKEND_URL}/api/short`, {
 				original_url: url,
 			});
 			console.log(response.data);
-			setShortUrl(
-				`http://localhost:3000/api/short/${response.data.short_code}`,
-			);
+			setShortUrl(`${BACKEND_URL}/api/short/${response.data.short_code}`);
 		} catch (error) {
 			console.error('Error acortando URL:', error);
 		}
